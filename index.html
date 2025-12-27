@@ -8,69 +8,74 @@
         
     <style>
         :root {
-            --bg-color: #f3f4f6;
+            --bg-color: #f8f9fa;
             --card-bg: #ffffff;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --accent-color: #2563eb;
-            --tag-bg: #dbeafe;
-            --tag-text: #1e40af;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --accent: #3182ce;
+            --tag-bg: #ebf8ff;
+            --tag-text: #2c5282;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-primary);
-            margin: 0;
+            color: var(--text-main);
             padding: 40px 20px;
             line-height: 1.6;
         }
         .container { max-width: 900px; margin: 0 auto; }
         header { text-align: center; margin-bottom: 50px; }
-        h1 { font-size: 2.5rem; font-weight: 800; margin: 0; letter-spacing: -0.025em; color: var(--text-primary); }
-        .date { color: var(--text-secondary); margin-top: 10px; font-weight: 500; }
+        h1 { font-size: 2.2rem; font-weight: 800; color: #1a202c; margin-bottom: 0.5rem; }
+        .date { color: var(--text-muted); font-weight: 500; }
     
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
     
         .card {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
     
-        .speaker-name { 
-            font-size: 1.25rem; 
-            font-weight: 700; 
-            margin: 0 0 12px 0; 
-            padding-bottom: 12px;
-            border-bottom: 2px solid #f3f4f6;
-        }
+        .card-header { margin-bottom: 20px; border-bottom: 2px solid #edf2f7; padding-bottom: 15px; }
+        .speaker-name { font-size: 1.4rem; font-weight: 700; color: #2d3748; margin: 0 0 10px 0; }
     
-        .topics { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .topics { display: flex; flex-wrap: wrap; gap: 8px; }
         .tag { 
-            background: var(--tag-bg); 
-            color: var(--tag-text); 
-            padding: 4px 12px; 
-            border-radius: 9999px; 
-            font-size: 0.75rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 0.05em;
+            background: var(--tag-bg); color: var(--tag-text); 
+            padding: 4px 10px; border-radius: 6px; 
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
         }
     
-        ul { margin: 0; padding-left: 20px; flex-grow: 1; }
-        li { margin-bottom: 8px; color: var(--text-secondary); font-size: 0.95rem; }
+        .narrative {
+            font-size: 1.05rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
     
-        footer { text-align: center; margin-top: 60px; color: #9ca3af; font-size: 0.875rem; }
+        .takeaways-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #a0aec0;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+    
+        ul { margin: 0; padding-left: 20px; }
+        li { margin-bottom: 8px; color: #4a5568; font-size: 0.95rem; }
+    
+        footer { text-align: center; margin-top: 60px; color: #a0aec0; font-size: 0.9rem; }
     </style>
     
     </head>
@@ -83,31 +88,39 @@
             <div class="grid">
                 
         <article class="card">
-            <div class="speaker-name">pascalbornet</div>
-            <div class="topics"><span class="tag">Robotics</span><span class="tag">3D printing</span><span class="tag">Automation</span></div>
-            <ul><li>Highlights a Japanese team of three innovators who built a fully functional robotic system using 3D printing rather than traditional assembly.</li><li>Notes the system rethinks core components such as gears and the frame, enabling lighter robots that can be produced faster and customized more easily.</li><li>Suggests the approach blends engineering and design freedom, reducing constraints imposed by standard parts.</li><li>Posits potential impacts on how robots are built, how automation is taught, and how quickly new robotic ideas can be prototyped and deployed.</li><li>Asks readers whether they would trust a 3D-printed robot to work alongside them.</li></ul>
+            <div class="card-header">
+                <div class="speaker-name">pascalbornet</div>
+                <div class="topics"><span class="tag">Robotics</span><span class="tag">3D Printing</span><span class="tag">Automation</span></div>
+            </div>
+        
+            <div class="narrative">
+                A Japanese team has demonstrated a fully functional robotic system that is 3D-printed rather than traditionally assembled, rethinking components from gears to the frame. The approach promises lighter robots that can be produced faster and customized more easily, potentially changing how robotic systems are prototyped and deployed. Beyond manufacturing efficiency, the post frames this as a shift in design constraints—enabling more creative, rapid iteration in robotics and automation. The broader implication is faster innovation cycles in education, R&D, and real-world automation contexts.
+            </div>
+        
+            <div>
+                <div class="takeaways-title">Key Takeaways</div>
+                <ul><li>A complete robotic system (including mechanical components) can be produced via 3D printing rather than conventional assembly.</li><li>Primary claimed benefits are reduced weight, faster production, and easier customization.</li><li>Could accelerate robotics prototyping and experimentation, impacting both industrial automation and training/education pipelines.</li><li>Signals a potential shift from parts-driven design to geometry-driven design enabled by additive manufacturing.</li></ul>
+            </div>
         </article>
         
         <article class="card">
-            <div class="speaker-name">gary-marcus-b6384b4</div>
-            <div class="topics"><span class="tag">AI</span><span class="tag">Risk</span><span class="tag">Forecasting</span></div>
-            <ul><li>States that an unspecified outcome was completely predictable.</li><li>Says they have been warning about it since 2023.</li></ul>
-        </article>
+            <div class="card-header">
+                <div class="speaker-name">alessiopomaro</div>
+                <div class="topics"><span class="tag">World Models</span><span class="tag">Generative AI</span><span class="tag">Simulation</span></div>
+            </div>
         
-        <article class="card">
-            <div class="speaker-name">stevenouri</div>
-            <div class="topics"></div>
-            <ul><li>No post content provided.</li></ul>
-        </article>
+            <div class="narrative">
+                Runway has introduced GWM-1, a “General World Model” designed to simulate reality in real time, built on its Gen-4.5 foundation. The post highlights an interactive, controllable autoregressive architecture that unifies video generation, actions, and audio, with three productized variants for coherent explorable worlds, voice-driven photoreal avatars, and robotics simulation/training using synthetic data and safe policy evaluation. Gen-4.5 is positioned as adding native audio generation, sound editing, and multi-shot video assembly to maintain audiovisual coherence during full-video edits. Strategically, the claim is a shift from models that only interpret the world to systems that recreate and test it, potentially accelerating creativity, research, and human-AI interaction.
+            </div>
         
-        <article class="card">
-            <div class="speaker-name">alessiopomaro</div>
-            <div class="topics"><span class="tag">Generative AI</span><span class="tag">World models</span><span class="tag">Simulation</span></div>
-            <ul><li>Reports that Runway introduced GWM-1, a General World Model designed to simulate reality in real time and based on Gen-4.5.</li><li>Describes GWM-1 as an interactive, controllable autoregressive model that unifies video generation, actions, and audio in a single architecture.</li><li>Outlines three variants: GWM Worlds (explorable coherent environments), GWM Avatars (photorealistic voice-driven reactive characters), and GWM Robotics (robot simulation and training using synthetic data with safe policy evaluation).</li><li>Adds that Gen-4.5 brings native audio generation, sound editing, and multi-shot editing to modify full videos while maintaining visual and audio coherence.</li><li>Argues that GWM-1 represents a shift toward AI systems that recreate and experiment with the world to accelerate research, creativity, and human-AI interaction.</li></ul>
+            <div>
+                <div class="takeaways-title">Key Takeaways</div>
+                <ul><li>GWM-1 is presented as a real-time “world model” that combines video, actions, and audio in a single controllable architecture.</li><li>Three variants are outlined: GWM Worlds (coherent explorable environments), GWM Avatars (voice-guided photoreal characters), and GWM Robotics (simulation and robot training with synthetic data and safe evaluation).</li><li>Gen-4.5 adds native audio generation plus sound editing and multi-shot editing aimed at preserving audiovisual consistency across full-video modifications.</li><li>Positions world-model simulation as a catalyst for faster iteration in creative workflows and safer experimentation in robotics and policy testing.</li></ul>
+            </div>
         </article>
         
             </div>
-            <footer>Generated by n8n • 4 Items Processed</footer>
+            <footer>Generated by n8n • 2 Articles Processed</footer>
         </div>
     </body>
     </html>
