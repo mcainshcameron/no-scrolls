@@ -4,109 +4,48 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daily AI Insights</title>
+        <title>Daily AI Pulse</title>
         
     <style>
         :root {
             --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
             --text-primary: #1a1a1a;
             --text-secondary: #4a4a4a;
-            --card-bg: #ffffff;
-            --accent-color: #2563eb;
             --tag-bg: #eff6ff;
             --tag-text: #1d4ed8;
         }
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-primary);
-            margin: 0;
             padding: 40px 20px;
             line-height: 1.6;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 0;
-            color: #111;
-            letter-spacing: -0.02em;
-        }
-        .date {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-top: 10px;
-            font-weight: 500;
-        }
-        /* Grid Layout */
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 40px; }
+        h1 { font-size: 2.5rem; margin: 0; color: #111; }
+        .date { color: var(--text-secondary); margin-top: 10px; }
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            gap: 20px;
         }
         .card {
             background: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
             border: 1px solid rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
         }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .speaker-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin: 0 0 12px 0;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #f3f4f6;
-        }
-        .topics-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-        .tag {
-            background-color: var(--tag-bg);
-            color: var(--tag-text);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        ul {
-            margin: 0;
-            padding-left: 20px;
-            flex-grow: 1;
-        }
-        li {
-            margin-bottom: 8px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-        li:last-child {
-            margin-bottom: 0;
-        }
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #9ca3af;
-            font-size: 0.875rem;
-        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+        .speaker-name { font-size: 1.25rem; font-weight: 700; margin: 0 0 12px 0; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px;}
+        .topics { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+        .tag { background: var(--tag-bg); color: var(--tag-text); padding: 4px 10px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+        ul { padding-left: 20px; margin: 0; }
+        li { margin-bottom: 6px; color: var(--text-secondary); font-size: 0.95rem; }
+        footer { text-align: center; margin-top: 50px; color: #999; font-size: 0.85rem; }
     </style>
     
     </head>
@@ -116,24 +55,16 @@
                 <h1>Daily AI Pulse</h1>
                 <div class="date">December 27, 2025</div>
             </header>
-        
             <div class="grid">
                 
         <article class="card">
-            <h2 class="speaker-name">System Error</h2>
-            <div class="topics-container">
-                <span class="tag">Error</span>
-            </div>
-            <ul>
-                <li>Could not parse AI response into JSON.</li><li>Raw output: There wasn’t a specific question or request in your last comment beyond the note that “undefined is ...</li>
-            </ul>
+            <div class="speaker-name">Parsing Error</div>
+            <div class="topics"><span class="tag">System</span></div>
+            <ul><li>The AI generated text, but Python couldn't convert it to JSON.</li><li>Preview of text received: ...</li></ul>
         </article>
         
             </div>
-
-            <footer>
-                Generated automatically by n8n • 1 Updates processed
-            </footer>
+            <footer>Generated by n8n • 1 Items Processed</footer>
         </div>
     </body>
     </html>
