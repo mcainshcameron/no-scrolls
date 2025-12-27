@@ -1,24 +1,20 @@
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>No Scrolls Given</title>
-        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Briefing Hub</title>
     <style>
-        @import url('[https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap](https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap)');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
 
         :root {
-            --bg-color: #F8F9FC; /* Cool, calm grey-blue */
+            --bg-color: #F8F9FC;
             --card-bg: #FFFFFF;
-            --text-headline: #0F172A; /* Deep Navy/Black */
-            --text-body: #334155;    /* Slate Grey */
+            --text-headline: #0F172A;
+            --text-body: #334155;
             --text-muted: #64748B;
-            --accent-primary: #4F46E5; /* Indigo */
-            --accent-secondary: #818CF8;
-            --tag-bg: #EEF2FF;
-            --tag-text: #4338CA;
+            --accent-li: #4F46E5; /* LinkedIn Indigo */
+            --accent-yt: #FF0000; /* YouTube Red */
             --border-radius: 20px;
         }
 
@@ -30,21 +26,27 @@
             padding: 0;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 850px;
             margin: 0 auto;
             padding: 60px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* HEADER STYLES */
+        /* HEADER */
         header {
             text-align: center;
             margin-bottom: 60px;
-            position: relative;
         }
-    
+        
         .brand-pill {
             display: inline-block;
             background: #000;
@@ -69,268 +71,148 @@
             line-height: 1.1;
         }
 
-        .date {
+        .subtitle {
             margin-top: 15px;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 500;
         }
 
-        /* GRID STYLES */
-        .grid {
-            display: flex;
-            flex-direction: column;
+        /* NAVIGATION GRID */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
+            width: 100%;
         }
 
-        /* CARD STYLES */
-        .card {
+        /* CARD LINKS */
+        .nav-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 35px;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+            padding: 40px;
+            text-decoration: none;
+            color: inherit;
             border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
-            border-color: rgba(79, 70, 229, 0.2);
-        }
-
-        .card-header {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
-        .speaker-name {
+        .nav-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Specific Hover Styles */
+        .nav-card.li:hover {
+            box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.2);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+
+        .nav-card.yt:hover {
+            box-shadow: 0 20px 40px -10px rgba(255, 0, 0, 0.15);
+            border-color: rgba(255, 0, 0, 0.2);
+        }
+
+        /* Card Content */
+        .icon-box {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .nav-card.li .icon-box { background: #EEF2FF; color: var(--accent-li); }
+        .nav-card.yt .icon-box { background: #FFE5E5; color: var(--accent-yt); }
+
+        .card-title {
             font-family: 'Outfit', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
+            margin-bottom: 10px;
             color: var(--text-headline);
-            margin: 0;
         }
 
-        /* TAGS */
-        .topics {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: var(--tag-bg);
-            color: var(--tag-text);
-            padding: 6px 14px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: background 0.2s;
-        }
-    
-        .card:hover .tag {
-            background: #E0E7FF;
-        }
-
-        /* CONTENT */
-        .narrative {
-            font-size: 1.15rem;
-            color: var(--text-body);
-            margin-bottom: 30px;
-            line-height: 1.8;
-            font-weight: 400;
-        }
-
-        .takeaways-box {
-            background: #F8FAFC;
-            border-radius: 12px;
-            padding: 25px;
-            border-left: 4px solid var(--accent-primary);
-        }
-
-        .takeaways-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+        .card-desc {
+            font-size: 1rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        ul {
             margin: 0;
-            padding-left: 0;
-            list-style: none;
         }
 
-        li {
-            margin-bottom: 12px;
-            position: relative;
-            padding-left: 20px;
-            font-size: 0.95rem;
-            font-weight: 500;
+        .arrow {
+            margin-top: 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
         }
 
-        li::before {
-            content: "•";
-            color: var(--accent-primary);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-            top: 0px;
-        }
+        .nav-card.li .arrow { color: var(--accent-li); }
+        .nav-card.yt .arrow { color: var(--accent-yt); }
 
-        li:last-child { margin-bottom: 0; }
+        .nav-card:hover .arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
         /* FOOTER */
         footer {
             text-align: center;
-            margin-top: 80px;
-            padding-bottom: 40px;
+            padding: 40px 0;
             color: var(--text-muted);
-        }
-    
-        .end-mark {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            opacity: 0.3;
+            font-size: 0.9rem;
         }
 
-        /* MOBILE OPTIMIZATION */
-        @media (max-width: 600px) {
-            .container { padding: 40px 15px; }
-            h1 { font-size: 2.2rem; }
-            .card { padding: 25px; }
-            .card-header { flex-direction: column; gap: 10px; }
-            .narrative { font-size: 1.05rem; }
+        /* MOBILE */
+        @media (max-width: 650px) {
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2.5rem; }
+            .container { padding: 40px 20px; }
         }
     </style>
-    
-    </head>
-    <body>
-        <div class="container">
-            <header>
-                <div class="brand-pill">Daily Briefing</div>
-                <h1>No Scrolls Given</h1>
-                <div class="date">December 27, 2025</div>
-            </header>
-        
-            <div class="grid">
-                
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">pascalbornet</h2>
-                <div class="topics"><span class="tag">Robotics</span><span class="tag">3D Printing</span><span class="tag">Manufacturing Innovation</span></div>
-            </div>
-        
-            <div class="narrative">
-                A Japanese team has demonstrated a fully functional robotic system produced via 3D printing, rethinking core mechanical elements like gears and structural frames. The argument is that printing robots rather than assembling them could unlock lighter machines, faster production cycles, and far greater customization. The broader significance is a potential shift in how robotics is designed, taught, and iterated—moving constraints from parts availability to digital design freedom.
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>A complete robotic system (including mechanical components) can be produced through 3D printing rather than traditional assembly.</li><li>The approach promises faster production, reduced weight, and easier customization compared to conventional builds.</li><li>This could accelerate prototyping and broaden access to robotics education by simplifying manufacturing workflows.</li></ul>
-            </div>
-        </article>
-        
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">gary-marcus-b6384b4</h2>
-                <div class="topics"><span class="tag">AI Risk</span><span class="tag">Forecasting</span><span class="tag">Tech Critique</span></div>
-            </div>
-        
-            <div class="narrative">
-                A brief comment frames an unspecified development as “completely predictable,” noting the author has been warning about it since 2023. While lacking context, the intent is to reinforce a stance that current AI trajectories have foreseeable failure modes and that recent events validate earlier cautions. The post functions more as a credibility marker than an argument, signaling “this outcome was expected.”
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>Positions a recent (unspecified) event as an anticipated outcome rather than a surprise.</li><li>Claims prior warnings dating back to 2023, implying avoidable risk or mismanagement.</li><li>Provides no details on the incident, limiting actionable insight without additional context.</li></ul>
-            </div>
-        </article>
-        
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">alessiopomaro</h2>
-                <div class="topics"><span class="tag">World Models</span><span class="tag">Generative Video</span><span class="tag">Robotics Simulation</span></div>
-            </div>
-        
-            <div class="narrative">
-                Runway is presented as launching GWM-1, a “General World Model” designed to simulate reality in real time via an interactive, controllable autoregressive architecture that combines video, actions, and audio. The post highlights three productized directions—explorable worlds, voice-driven photoreal avatars, and robotics simulation/training using synthetic data and safer policy evaluation. The strategic implication is a shift from models that merely generate media to systems that can emulate environments for experimentation, accelerating creative workflows and applied research (notably robotics).
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>GWM-1 unifies video generation, action/control, and audio within a single interactive architecture (based on Gen-4.5).</li><li>Three variants target different use cases: coherent explorable environments, responsive photoreal avatars, and robotics simulation/training.</li><li>Gen-4.5 introduces native audio generation plus sound editing and multi-shot video editing while maintaining audiovisual coherence.</li><li>Positions “world simulation” as the next step beyond content generation, with implications for faster iteration in creativity and robotics R&D.</li></ul>
-            </div>
-        </article>
-        
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">alessiopomaro</h2>
-                <div class="topics"><span class="tag">LLM Training</span><span class="tag">Reinforcement Learning</span><span class="tag">Inference Optimization</span></div>
-            </div>
-        
-            <div class="narrative">
-                Unsloth is described as introducing a more efficient method to train GPT-OSS models using reinforcement learning (GRPO), focusing on speed, memory reduction, and stability. The post claims major practical gains—faster inference, lower VRAM usage, and much longer context—enabled by rewritten inference code (including Flex Attention), weight sharing, and custom kernels, making training feasible on cheaper GPUs. It also emphasizes governance within RL by addressing reward hacking with pragmatic safeguards, signaling that efficiency gains must be paired with training-time integrity controls.
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>Claims performance improvements for GPT-OSS: ~3× faster inference, ~50% less VRAM usage, and up to ~8× longer context without quality loss.</li><li>Key techniques cited: Flex Attention (memory use from quadratic to linear), weight sharing, and custom kernels for faster math operations.</li><li>Positions Unsloth as supporting RL at 4-bit precision, enabling RL workflows on lower-cost GPUs (e.g., 15GB T4).</li><li>Calls out reward hacking as a practical RL risk and proposes mitigations (restrict external libraries, reset caches, limit global variables).</li></ul>
-            </div>
-        </article>
-        
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">eordax</h2>
-                <div class="topics"><span class="tag">Agent Security</span><span class="tag">Data Exfiltration</span><span class="tag">Enterprise Governance</span></div>
-            </div>
-        
-            <div class="narrative">
-                A DEFCON security account alleges that Microsoft Copilot Studio agents were compromised through prompt-based attacks, leading to data exposure and unauthorized actions. The post argues that “no human in the loop” autonomy is being marketed as a feature while creating an outsized attack surface—where a single vulnerability can cascade into full system compromise. The executive-level message is that agent deployments without rigorous security controls and governance are not innovation, but operational negligence.
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>Claims researchers used prompt-based techniques to hijack Copilot Studio agents and trigger data exfiltration and unauthorized actions.</li><li>Examples cited include exposure of CRM records, private internal tools, billing information, and internal communications.</li><li>Highlights the systemic risk of autonomous agents connected to enterprise systems: one exploit can become broad access across tools and data.</li><li>Recommends treating agent autonomy as a security-critical capability requiring strong governance, not as a default product feature.</li></ul>
-            </div>
-        </article>
-        
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">eordax</h2>
-                <div class="topics"><span class="tag">Developer Productivity</span><span class="tag">AI Tooling</span><span class="tag">Workforce Transformation</span></div>
-            </div>
-        
-            <div class="narrative">
-                The post reflects on a shared sense of falling behind as AI rapidly reshapes software development and knowledge work. It argues that value is shifting from writing code to orchestrating intelligence—agents, prompts, context, memory, tools, and workflows—implying new core competencies for builders. The underlying point is cultural and organizational: the profession is being reinvented in real time, and continuous public learning is becoming normal rather than a sign of individual failure.
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>Frames AI as redefining software work: orchestration of tools/agents and context management becomes central.</li><li>Normalizes persistent skills-gap anxiety as a structural outcome of rapid technological change.</li><li>Signals a shift in developer identity from “code author” to “system orchestrator” across workflows, tools, and automation.</li></ul>
-            </div>
-        </article>
-        
-            </div>
+</head>
+<body>
 
-            <footer>
-                <div class="end-mark">✦</div>
-                <p>You're all caught up.</p>
-                <small>Processed 6 updates without the doomscroll.</small>
-            </footer>
-        </div>
-    </body>
-    </html>
-    
+    <div class="container">
+        <header>
+            <div class="brand-pill">Welcome Back</div>
+            <h1>Choose Your Briefing</h1>
+            <div class="subtitle">Stay updated without the doomscroll.</div>
+        </header>
+
+        <nav class="nav-grid">
+            <a href="li.html" class="nav-card li">
+                <div class="icon-box">💼</div>
+                <div class="card-title">Professional</div>
+                <p class="card-desc">Industry updates, thought leadership, and networking insights.</p>
+                <div class="arrow">→</div>
+            </a>
+
+            <a href="yt.html" class="nav-card yt">
+                <div class="icon-box">▶</div>
+                <div class="card-title">Technical</div>
+                <p class="card-desc">Deep dives, tutorials, and tech analysis from your top channels.</p>
+                <div class="arrow">→</div>
+            </a>
+        </nav>
+
+        <footer>
+            <p>Select a source to view today's summary.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
