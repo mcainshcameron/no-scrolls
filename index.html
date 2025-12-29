@@ -1,24 +1,20 @@
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>No Scrolls Given</title>
-        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Briefing Hub</title>
     <style>
-        @import url('[https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap](https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap)');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
 
         :root {
-            --bg-color: #F8F9FC; /* Cool, calm grey-blue */
+            --bg-color: #F8F9FC;
             --card-bg: #FFFFFF;
-            --text-headline: #0F172A; /* Deep Navy/Black */
-            --text-body: #334155;    /* Slate Grey */
+            --text-headline: #0F172A;
+            --text-body: #334155;
             --text-muted: #64748B;
-            --accent-primary: #4F46E5; /* Indigo */
-            --accent-secondary: #818CF8;
-            --tag-bg: #EEF2FF;
-            --tag-text: #4338CA;
+            --accent-li: #4F46E5; /* LinkedIn Indigo */
+            --accent-yt: #FF0000; /* YouTube Red */
             --border-radius: 20px;
         }
 
@@ -30,21 +26,27 @@
             padding: 0;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 850px;
             margin: 0 auto;
             padding: 60px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* HEADER STYLES */
+        /* HEADER */
         header {
             text-align: center;
             margin-bottom: 60px;
-            position: relative;
         }
-    
+        
         .brand-pill {
             display: inline-block;
             background: #000;
@@ -69,252 +71,148 @@
             line-height: 1.1;
         }
 
-        .date {
+        .subtitle {
             margin-top: 15px;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 500;
         }
 
-        /* GRID STYLES */
-        .grid {
-            display: flex;
-            flex-direction: column;
+        /* NAVIGATION GRID */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
+            width: 100%;
         }
 
-        /* CARD STYLES */
-        .card {
+        /* CARD LINKS */
+        .nav-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 35px;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+            padding: 40px;
+            text-decoration: none;
+            color: inherit;
             border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
-            border-color: rgba(79, 70, 229, 0.2);
-        }
-
-        .card-header {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
-        .speaker-name {
+        .nav-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Specific Hover Styles */
+        .nav-card.li:hover {
+            box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.2);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+
+        .nav-card.yt:hover {
+            box-shadow: 0 20px 40px -10px rgba(255, 0, 0, 0.15);
+            border-color: rgba(255, 0, 0, 0.2);
+        }
+
+        /* Card Content */
+        .icon-box {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .nav-card.li .icon-box { background: #EEF2FF; color: var(--accent-li); }
+        .nav-card.yt .icon-box { background: #FFE5E5; color: var(--accent-yt); }
+
+        .card-title {
             font-family: 'Outfit', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
+            margin-bottom: 10px;
             color: var(--text-headline);
-            margin: 0;
         }
 
-        /* TAGS */
-        .topics {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: var(--tag-bg);
-            color: var(--tag-text);
-            padding: 6px 14px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: background 0.2s;
-        }
-    
-        .card:hover .tag {
-            background: #E0E7FF;
-        }
-
-        /* CONTENT */
-        .narrative {
-            font-size: 1.15rem;
-            color: var(--text-body);
-            margin-bottom: 30px;
-            line-height: 1.8;
-            font-weight: 400;
-        }
-
-        .takeaways-box {
-            background: #F8FAFC;
-            border-radius: 12px;
-            padding: 25px;
-            border-left: 4px solid var(--accent-primary);
-        }
-
-        .takeaways-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+        .card-desc {
+            font-size: 1rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        ul {
             margin: 0;
-            padding-left: 0;
-            list-style: none;
         }
 
-        li {
-            margin-bottom: 12px;
-            position: relative;
-            padding-left: 20px;
-            font-size: 0.95rem;
-            font-weight: 500;
+        .arrow {
+            margin-top: 25px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
         }
 
-        li::before {
-            content: "•";
-            color: var(--accent-primary);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-            top: 0px;
-        }
+        .nav-card.li .arrow { color: var(--accent-li); }
+        .nav-card.yt .arrow { color: var(--accent-yt); }
 
-        li:last-child { margin-bottom: 0; }
+        .nav-card:hover .arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
         /* FOOTER */
         footer {
             text-align: center;
-            margin-top: 80px;
-            padding-bottom: 40px;
+            padding: 40px 0;
             color: var(--text-muted);
-        }
-    
-        .end-mark {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            opacity: 0.3;
+            font-size: 0.9rem;
         }
 
-        /* MOBILE OPTIMIZATION */
-        @media (max-width: 600px) {
-            .container { padding: 40px 15px; }
-            h1 { font-size: 2.2rem; }
-            .card { padding: 25px; }
-            .card-header { flex-direction: column; gap: 10px; }
-            .narrative { font-size: 1.05rem; }
+        /* MOBILE */
+        @media (max-width: 650px) {
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2.5rem; }
+            .container { padding: 40px 20px; }
         }
     </style>
-    
-    </head>
-    <body>
-        <div class="container">
-            <header>
-                <div class="brand-pill">Daily Briefing</div>
-                <h1>No Scrolls Given</h1>
-                <div class="date">December 29, 2025</div>
-            </header>
-        
-            <div class="grid">
-                
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">marcus-weldon-1266497</h2>
-                <div class="topics"><span class="tag">AI Economics</span><span class="tag">Productivity</span><span class="tag">Labor Markets</span></div>
-            </div>
-        
-            <div class="narrative">
-                AI’s impact on productivity, jobs, and wages is being widely debated, but the post argues that clearer guidance comes from Erik Brynjolfsson’s work on how these forces interact. It points readers to a Newsweek article in an “AI Impact Series” positioned as a grounded explanation of likely scenarios. The underlying message is that AI outcomes depend on the interplay between technology adoption, labor substitution/augmentation, and policy or organizational choices—not just the tech itself.
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>Frames AI’s real impact as a combined question of productivity gains, employment shifts, and wage dynamics rather than a single metric.</li><li>Signals Erik Brynjolfsson as a key authority for interpreting second-order effects (how one change triggers others across the economy).</li><li>Highlights scenario-based thinking about multiple “likely futures” rather than a single deterministic outcome.</li></ul>
-            </div>
-        </article>
-        
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">yann-lecun</h2>
-                <div class="topics"><span class="tag">AI Industry</span><span class="tag">AI Debate</span><span class="tag">Ecosystem Strategy</span></div>
-            </div>
-        
-            <div class="narrative">
-                A brief post emphasizes that an unresolved debate has high stakes, suggesting the direction of a major segment of the AI industry depends on the answer. The intent is to underline that foundational technical or strategic disagreements in AI aren’t academic—they shape product roadmaps, investment flows, and competitive positioning. The post functions as a prompt to treat the debate as consequential for industry structure.
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>Positions an ongoing AI debate as pivotal enough to influence an entire industry’s trajectory.</li><li>Implies that settling foundational questions can determine which approaches scale into dominant platforms.</li><li>Reinforces that AI strategy choices (not just model performance) will shape winners and losers.</li></ul>
-            </div>
-        </article>
-        
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">pascalbornet</h2>
-                <div class="topics"><span class="tag">Future of Work</span><span class="tag">Workplace Wellbeing</span><span class="tag">Automation</span></div>
-            </div>
-        
-            <div class="narrative">
-                Modern work structures meant to create balance have evolved into constant connectivity and burnout, with stress unequally distributed—especially among women balancing work and home responsibilities. The post argues that AI can be used to reduce “busywork,” filter noise, and improve workflow management so people regain time and autonomy. The central claim is that AI’s best role is restorative augmentation—improving wellbeing and freeing creativity—rather than simply driving harder productivity targets.
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>Cites Gallup: about half of working women experience daily stress vs. 40% of men, often tied to dual responsibilities.</li><li>Highlights “leaveism” (using personal time to catch up on work) as a symptom of systemic overload.</li><li>Positions AI as a mechanism to automate low-value tasks and reduce communication noise to restore work-life balance.</li><li>Argues for an explicit design goal: use AI as a lever for autonomy and wellbeing, not as a tool for intensifying work.</li></ul>
-            </div>
-        </article>
-        
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">alessiopomaro</h2>
-                <div class="topics"><span class="tag">Open Source LLMs</span><span class="tag">Code Generation</span><span class="tag">Developer Tools</span></div>
-            </div>
-        
-            <div class="narrative">
-                MiniMax M2.1 is presented as an open-source model aimed at real-world complex tasks with a strong emphasis on multilingual coding performance. The post claims state-of-the-art benchmark results (including SWE-family benchmarks) and competitive positioning against proprietary models, while also stressing efficiency (fast inference and low token usage). Beyond coding, it highlights technical writing, agentic automation, tool use, UI aesthetics, and 3D environment interaction, alongside availability for local deployment and tiered API pricing.
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>Claims strong multilingual coding support (e.g., Rust, Java, Golang, C++, Kotlin, TypeScript) and top-tier results on benchmarks such as SWE, Multi-SWE, and VIBE.</li><li>Positions M2.1 as outperforming Gemini 3 Pro and Claude Sonnet 4.5 while maintaining efficiency (speed and token consumption).</li><li>Emphasizes broader capabilities: technical writing, agentic automation, tool use, UI-focused output, and 3D interaction.</li><li>Notes distribution and commercialization: local deployment via HuggingFace plus official API tiers starting around $2/month up to $50/month with higher prompt limits.</li></ul>
-            </div>
-        </article>
-        
-        <article class="card">
-            <div class="card-header">
-                <h2 class="speaker-name">eordax</h2>
-                <div class="topics"><span class="tag">Skills</span><span class="tag">Critical Thinking</span><span class="tag">AI Literacy</span></div>
-            </div>
-        
-            <div class="narrative">
-                The post argues that in an AI-dominated environment, the most important skill is critical thinking. The implication is that as AI systems generate more content and recommendations, humans must be better at evaluating quality, spotting errors or bias, and making sound judgments. It positions critical thinking as a durable advantage that complements AI rather than competes with it.
-            </div>
-        
-            <div class="takeaways-box">
-                <div class="takeaways-title">The Bottom Line</div>
-                <ul><li>Elevates critical thinking as the core “future-proof” skill as AI becomes more pervasive.</li><li>Implies a growing need to validate AI outputs rather than accept them at face value.</li><li>Suggests human judgment and reasoning remain essential differentiators in AI-assisted work.</li></ul>
-            </div>
-        </article>
-        
-            </div>
+</head>
+<body>
 
-            <footer>
-                <div class="end-mark">✦</div>
-                <p>You're all caught up.</p>
-                <small>Processed 5 updates without the doomscroll.</small>
-            </footer>
-        </div>
-    </body>
-    </html>
-    
+    <div class="container">
+        <header>
+            <div class="brand-pill">Welcome Back</div>
+            <h1>Choose Your Briefing</h1>
+            <div class="subtitle">Stay updated without the doomscroll.</div>
+        </header>
+
+        <nav class="nav-grid">
+            <a href="li.html" class="nav-card li">
+                <div class="icon-box">💼</div>
+                <div class="card-title">Professional</div>
+                <p class="card-desc">Industry updates, thought leadership, and networking insights.</p>
+                <div class="arrow">→</div>
+            </a>
+
+            <a href="yt.html" class="nav-card yt">
+                <div class="icon-box">▶</div>
+                <div class="card-title">Technical</div>
+                <p class="card-desc">Deep dives, tutorials, and tech analysis from your top channels.</p>
+                <div class="arrow">→</div>
+            </a>
+        </nav>
+
+        <footer>
+            <p>Select a source to view today's summary.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
