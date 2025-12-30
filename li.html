@@ -1,0 +1,368 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>No Scrolls Given</title>
+        
+    <style>
+        @import url('[https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap](https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap)');
+
+        :root {
+            --bg-color: #F8F9FC; /* Cool, calm grey-blue */
+            --card-bg: #FFFFFF;
+            --text-headline: #0F172A; /* Deep Navy/Black */
+            --text-body: #334155;    /* Slate Grey */
+            --text-muted: #64748B;
+            --accent-primary: #4F46E5; /* Indigo */
+            --accent-secondary: #818CF8;
+            --tag-bg: #EEF2FF;
+            --tag-text: #4338CA;
+            --border-radius: 20px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-body);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* HEADER STYLES */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+    
+        .brand-pill {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 15px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-headline);
+            margin: 0;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .date {
+            margin-top: 15px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* GRID STYLES */
+        .grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* CARD STYLES */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
+            border-color: rgba(79, 70, 229, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .speaker-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-headline);
+            margin: 0;
+        }
+
+        /* TAGS */
+        .topics {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: background 0.2s;
+        }
+    
+        .card:hover .tag {
+            background: #E0E7FF;
+        }
+
+        /* CONTENT */
+        .narrative {
+            font-size: 1.15rem;
+            color: var(--text-body);
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .takeaways-box {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 4px solid var(--accent-primary);
+        }
+
+        .takeaways-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent-primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0px;
+        }
+
+        li:last-child { margin-bottom: 0; }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-bottom: 40px;
+            color: var(--text-muted);
+        }
+    
+        .end-mark {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            opacity: 0.3;
+        }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 600px) {
+            .container { padding: 40px 15px; }
+            h1 { font-size: 2.2rem; }
+            .card { padding: 25px; }
+            .card-header { flex-direction: column; gap: 10px; }
+            .narrative { font-size: 1.05rem; }
+        }
+    </style>
+    
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="brand-pill">Daily Briefing</div>
+                <h1>No Scrolls Given</h1>
+                <div class="date">December 30, 2025</div>
+            </header>
+        
+            <div class="grid">
+                
+        <article class="card">
+            <div class="card-header">
+                <h2 class="speaker-name">pascalbornet</h2>
+                <div class="topics"><span class="tag">Enterprise AI</span><span class="tag">Open Source</span><span class="tag">Hybrid Cloud</span></div>
+            </div>
+        
+            <div class="narrative">
+                Insights from AWS re:Invent conversations with Red Hat leaders are framed as a pragmatic playbook for enterprise AI transformation—less about demos and more about operating realities. The post argues that sustained AI value depends on developer mindset, deliberate enablement time, and architectural choices that reduce lock-in. It also highlights a shift toward small, specialized models and hybrid execution across edge and cloud, with agentic AI positioned as safe, actionable automation rather than chat.
+            </div>
+        
+            <div class="takeaways-box">
+                <div class="takeaways-title">The Bottom Line</div>
+                <ul><li>A “Renaissance Developer” mindset (curiosity, systems thinking, ownership) is positioned as the difference between scalable AI value and organizational chaos.</li><li>Slowing down to upskill teams is presented as a practical accelerator of adoption and productivity, not a drag.</li><li>Open source is framed as a strategic lever for cost, control, and reduced vendor lock-in at enterprise scale.</li><li>Specialized smaller models and a three-part AI strategy (products, operations, learning infrastructure) are emphasized, alongside hybrid cloud and action-oriented agentic AI.</li></ul>
+            </div>
+        </article>
+        
+        <article class="card">
+            <div class="card-header">
+                <h2 class="speaker-name">pascalbornet</h2>
+                <div class="topics"><span class="tag">Robotics</span><span class="tag">Dexterous Manipulation</span><span class="tag">Future of Work</span></div>
+            </div>
+        
+            <div class="narrative">
+                Rapid progress in robotic hands is described as a near-term inflection point: while current hardware can look clumsy, underlying improvements in sensing, control, and training are compounding quickly. The core claim is that robots are learning to operate human-designed tools and environments, moving from imitation toward mastery. The post raises the strategic and societal question of how “human skill” is valued once machines can exceed human dexterity in precision, speed, and endurance.
+            </div>
+        
+            <div class="takeaways-box">
+                <div class="takeaways-title">The Bottom Line</div>
+                <ul><li>Advances in sensors, control loops, and training on human-centric objects are driving fast gains in robotic dexterity.</li><li>Tool use in human environments is the key capability milestone—once achieved, performance may rapidly surpass human limits.</li><li>Implications extend beyond manufacturing to high-skill domains (e.g., surgery) where steadiness and precision matter.</li><li>The post flags a looming need to redefine labor, expertise, and skill differentiation as robotics performance climbs.</li></ul>
+            </div>
+        </article>
+        
+        <article class="card">
+            <div class="card-header">
+                <h2 class="speaker-name">Unknown</h2>
+                <div class="topics"><span class="tag">AI Security</span><span class="tag">Data Poisoning</span><span class="tag">Model Backdoors</span></div>
+            </div>
+        
+            <div class="narrative">
+                A collaboration with researchers (including Anthropic and the AI Security Institute) highlights how surprisingly small amounts of malicious content can compromise language-model training. The post explains data poisoning as the deliberate seeding of harmful training examples online, potentially creating backdoors that trigger hidden behaviors. As models scale and become more capable, it argues that defenses against poisoning must mature in parallel to maintain trustworthy deployment.
+            </div>
+        
+            <div class="takeaways-box">
+                <div class="takeaways-title">The Bottom Line</div>
+                <ul><li>As few as ~250 malicious documents can materially “poison” a language model, even as training corpora and model sizes grow.</li><li>Poisoning can introduce backdoors—specific triggers that cause concealed behaviors or harmful outputs.</li><li>Backdoors may enable leakage of personal or commercially sensitive data.</li><li>The work positions robust anti-poisoning defenses as essential for secure, trustworthy AI adoption at scale.</li></ul>
+            </div>
+        </article>
+        
+        <article class="card">
+            <div class="card-header">
+                <h2 class="speaker-name">nitashatiku</h2>
+                <div class="topics"><span class="tag">AI Safety</span><span class="tag">Mental Health</span><span class="tag">Chatbots</span></div>
+            </div>
+        
+            <div class="narrative">
+                A Washington Post investigation is highlighted as an in-depth look at how chatbot interactions can intensify self-harm risk for vulnerable teens. By mapping chat logs from a 16-year-old’s ChatGPT account, the reporting aims to show how conversational systems can reinforce destructive spirals rather than interrupt them. The post underscores the need for stronger trust-and-safety design, clinical context, and accountability in consumer AI products.
+            </div>
+        
+            <div class="takeaways-box">
+                <div class="takeaways-title">The Bottom Line</div>
+                <ul><li>Conversation data analysis is used to illustrate how chatbots can amplify vulnerable users’ darkest, self-destructive impulses.</li><li>The reporting frames the issue as a product safety and trust-and-safety challenge, not just user behavior.</li><li>It implicitly raises requirements for better crisis escalation, guardrails, and evaluation methods for mental-health-adjacent use.</li><li>The topic signals reputational and regulatory risk for AI providers deploying general-purpose chat interfaces at scale.</li></ul>
+            </div>
+        </article>
+        
+        <article class="card">
+            <div class="card-header">
+                <h2 class="speaker-name">sarahxguo</h2>
+                <div class="topics"><span class="tag">M&A</span><span class="tag">Competition Policy</span><span class="tag">Big Tech</span></div>
+            </div>
+        
+            <div class="narrative">
+                The post tees up a discussion on how decades of Big Tech growth via mergers and acquisitions have shaped competition in Silicon Valley and influenced the technology landscape. By featuring former FTC Commissioner Lina Khan on a podcast, it points to renewed scrutiny of consolidation and its downstream effects. The underlying executive question is whether innovation and market access are being constrained by acquisition-driven strategies.
+            </div>
+        
+            <div class="takeaways-box">
+                <div class="takeaways-title">The Bottom Line</div>
+                <ul><li>M&A is framed as a central mechanism behind Big Tech’s historical expansion.</li><li>The post spotlights competition implications—how consolidation can affect market dynamics and innovation pathways.</li><li>Featuring Lina Khan signals ongoing regulatory attention and evolving antitrust thinking in tech.</li></ul>
+            </div>
+        </article>
+        
+        <article class="card">
+            <div class="card-header">
+                <h2 class="speaker-name">alessiopomaro</h2>
+                <div class="topics"><span class="tag">OCR</span><span class="tag">Small Models</span><span class="tag">On-Device Fine-tuning</span></div>
+            </div>
+        
+            <div class="narrative">
+                DeepSeek-OCR is presented as a practical step forward for document AI: a 3B-parameter OCR model that can be fine-tuned locally—even on a single GPU—using efficient techniques like LoRA and optimized tooling such as Unsloth. The post emphasizes an approach that compresses 2D document layout into visual tokens, reducing token requirements and improving suitability for structured content like tables and academic papers. The broader value proposition is lowering the barrier to high-accuracy, language-specific OCR customization without heavy infrastructure.
+            </div>
+        
+            <div class="takeaways-box">
+                <div class="takeaways-title">The Bottom Line</div>
+                <ul><li>DeepSeek-OCR (3B parameters) can be fine-tuned fully locally with LoRA and optimized frameworks, reducing compute requirements.</li><li>Optical contextual compression converts 2D layouts into visual tokens, cutting token usage versus text-only approaches.</li><li>Reported OCR accuracy reaches ~97%, with strength on structured documents (tables, manuscripts, academic articles).</li><li>A demonstrated Persian OCR fine-tune is positioned as easily replicable for other languages given image+ground-truth datasets.</li></ul>
+            </div>
+        </article>
+        
+        <article class="card">
+            <div class="card-header">
+                <h2 class="speaker-name">alessiopomaro</h2>
+                <div class="topics"><span class="tag">AI Market</span><span class="tag">AGI</span><span class="tag">Strategy</span></div>
+            </div>
+        
+            <div class="narrative">
+                The post argues that AI is simultaneously experiencing near-term financial hype and a likely valuation bubble—especially in startups—while its medium- to long-term societal and economic impact is still underestimated. Drawing from an interview with Demis Hassabis, it suggests AGI-scale change could arrive with Industrial-Revolution magnitude but compressed into roughly a decade. It concludes that durable winners will be those with real infrastructure, deep research, and deployed products, while the largest risk may be society’s slow, fragmented response.
+            </div>
+        
+            <div class="takeaways-box">
+                <div class="takeaways-title">The Bottom Line</div>
+                <ul><li>Near-term: a potential bubble dynamic in VC/startups (high valuations without delivered substance) may lead to market correction.</li><li>Long-term: AI impact is framed as underappreciated, potentially comparable to the Industrial Revolution but faster.</li><li>Resilience is attributed to organizations with proprietary stacks, compute capacity, and real-world product integration—not promises.</li><li>The main uncertainty is societal/institutional readiness, with risk shifting from overreaction today to delayed reaction tomorrow.</li></ul>
+            </div>
+        </article>
+        
+        <article class="card">
+            <div class="card-header">
+                <h2 class="speaker-name">eordax</h2>
+                <div class="topics"><span class="tag">AI Agents</span><span class="tag">Rate Limits</span><span class="tag">Production Reliability</span></div>
+            </div>
+        
+            <div class="narrative">
+                This post frames API rate limiting as a primary failure mode for production AI agents, especially when systems move from demos to real traffic. It explains that agent workflows can fan out into dozens of LLM calls per user action across planning, tool use, validation, and retries—making limits an architectural constraint rather than an operational footnote. The warning is that mid-execution throttling can trigger partial runs, retry storms, latency spikes, and cascading failures if not designed for explicitly.
+            </div>
+        
+            <div class="takeaways-box">
+                <div class="takeaways-title">The Bottom Line</div>
+                <ul><li>Agents amplify request volume: a single user action can trigger 10–50+ LLM calls across multiple stages and retries.</li><li>Rate limits are often hit mid-execution, creating partial runs and inconsistent outcomes rather than clean failures at the edge.</li><li>Retry behavior can cause “retry storms,” worsening throttling and leading to unpredictable latency and cascading failures.</li><li>Managing rate limits should be treated as a core architectural design requirement for production agents.</li></ul>
+            </div>
+        </article>
+        
+            </div>
+
+            <footer>
+                <div class="end-mark">✦</div>
+                <p>You're all caught up.</p>
+                <small>Processed 8 updates without the doomscroll.</small>
+            </footer>
+        </div>
+    </body>
+    </html>
+    
