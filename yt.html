@@ -222,24 +222,40 @@
             <header>
                 <div class="brand-pill">Daily Briefing</div>
                 <h1>Daily Tube Briefing</h1>
-                <div class="date">January 02, 2026</div>
+                <div class="date">January 03, 2026</div>
             </header>
         
             <div class="grid">
                 
         <article class="card">
             <div class="card-header">
-                <h2 class="speaker-name">Dwarkesh Patel (feat. Sarah Paine)</h2>
-                <div class="topics"><span class="tag">Tiananmen Square protests</span><span class="tag">Media exposure in closed societies</span><span class="tag">Soviet/Chinese political context</span></div>
+                <h2 class="speaker-name">Dwarkesh Patel (with Sarah Paine)</h2>
+                <div class="topics"><span class="tag">Economic history</span><span class="tag">Russian political economy</span><span class="tag">Institutional development</span></div>
             </div>
         
             <div class="narrative">
-                Sarah Paine recounts watching the Tiananmen Square demonstrations via Soviet television and argues that the visibility of the protests was partly accidental—driven by Mikhail Gorbachev’s presence in Beijing, which brought international press to the city. With the press already on-site for the summit, coverage continued as student demonstrations unfolded. Paine suggests Chinese authorities underestimated the political power of televised imagery and the ability of journalists to record events and move footage beyond China’s information controls. The episode frames Tiananmen’s global impact as shaped not only by the protests themselves but by the contingent logistics of media access and distribution.
+                Sarah Paine argues that Russia’s attempts at economic reform often backfired because the country lacked the institutional traditions that make markets and governance reforms work smoothly. She frames Russia’s long-run development as heavily shaped by geography and persistent external threats: a flat, invasion-prone landscape incentivized a large standing army and a war-oriented economy that pulled resources and attention toward central control. In contrast, Britain’s trajectory featured powerful merchant classes influencing law and policy, helping create commercial institutions and constraints on state power. She also highlights how Britain’s naval orientation reduced domestic coup risk because military power was physically deployed away from the capital, reinforcing a different civil-military balance than Russia’s.
             </div>
         
             <div class="takeaways-box">
                 <div class="takeaways-title">Key Insights</div>
-                <ul><li>International TV coverage of Tiananmen was enabled largely because Gorbachev’s Beijing visit brought a concentrated global press presence.</li><li>Once journalists were in place for the summit, they continued filming as student demonstrations escalated.</li><li>The transcript implies China’s information-control model at the time did not fully anticipate how television crews could capture sensitive events and export footage.</li><li>Media logistics and timing (who is in-country and why) can determine whether major political events become globally visible.</li></ul>
+                <ul><li>Russia’s flat geography and frequent invasions incentivized maintaining a large army, which in turn fostered a more centralized, war-economy orientation that can crowd out market institutions.</li><li>Reform efforts can fail when there is “no tradition” (institutional precedent) for property rights, commercial law, and governance mechanisms that reforms assume will exist.</li><li>Britain’s wealthy merchant class historically exerted political influence, shaping laws and institutions in ways that supported commerce—an influence Paine implies was weaker or absent in Russia.</li><li>A navy-based power structure can reduce the risk of coups in the capital because forces are deployed दूर from domestic political centers; a land-army-centric state faces different internal stability dynamics.</li><li>The underlying claim is path dependence: security imperatives and civil-military structure can lock in institutional patterns that make later economic liberalization harder to implement successfully.</li></ul>
+            </div>
+        </article>
+        
+        <article class="card">
+            <div class="card-header">
+                <h2 class="speaker-name">Matthew Berman</h2>
+                <div class="topics"><span class="tag">3D reconstruction from images</span><span class="tag">Meta SAM 3D</span><span class="tag">Open-source AI tooling for creators</span></div>
+            </div>
+        
+            <div class="narrative">
+                Matthew Berman demonstrates Meta’s SAM 3D tooling to turn ordinary 2D images into usable 3D assets, positioning it as a practical pipeline for 3D printing, games, and VFX. The workflow is interactive: you upload an image, click on an object to segment it, optionally refine the mask with add/remove clicks, then generate a 3D model and export it for downstream tools. He highlights additional controls (scale/rotate/regenerate) and stylization/effects options that make the output more creator-friendly. A separate “create 3D bodies” mode identifies people in complex scenes and produces a 3D body/skeleton-like approximation that could accelerate animation and VFX rigging tasks.
+            </div>
+        
+            <div class="takeaways-box">
+                <div class="takeaways-title">Key Insights</div>
+                <ul><li>Meta SAM 3D is presented as free, open source, and open weights, available via Meta’s SAM Playground with multiple modes (e.g., “Create 3D scenes” and “Create 3D bodies”).</li><li>Scene workflow: upload an image → click-to-segment an object → refine with add/remove → generate a 3D model → download in PLY or GLB (he uses GLB and converts to STL for 3D printing).</li><li>The tool supports basic editing controls (scale, rotate, move, regenerate) plus visual effects and style filters (e.g., shimmer, gold, explode, toon/cell-shaded, edge detection, pixelated, weather-like overlays).</li><li>Body workflow: the system detects multiple people in a single image and generates separate 3D approximations, including detailed pose structure (spine/limbs/fingers), with per-person selection and deletion.</li><li>Limitations are implied in reconstruction from a single view: backside/occluded geometry can look “wonky” because the model must hallucinate unseen surfaces, though front-facing detail can be strong enough for many creator use cases.</li></ul>
             </div>
         </article>
         
@@ -248,7 +264,7 @@
             <footer>
                 <div class="end-mark">✦</div>
                 <p>You're all caught up on YouTube.</p>
-                <small>Processed 1 videos.</small>
+                <small>Processed 2 videos.</small>
             </footer>
         </div>
     </body>
